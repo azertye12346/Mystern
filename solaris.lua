@@ -1221,7 +1221,9 @@ function SolarisLib:New(Config)
                 BindFrame.Parent = Section
                 BindFrame.Title.Text = text
                 BindFrame.Name = text .. "element"
-
+                local KeyCodeToString = function(KeyCode) -- KeyCode Enum.KeyCode
+                    return game:GetService("UserInputService"):GetStringForKeyCode(KeyCode)
+                end
                 
 
                 BindFrame.InputEnded:Connect(function(Input)
@@ -1285,6 +1287,7 @@ function SolarisLib:New(Config)
 
 				if preset then
                     Bind:Set(preset)
+                    BindFrame.BText.Text = KeyCodeToString(preset)
                 end
 
                 SolarisLib.Flags[flag] = Bind
