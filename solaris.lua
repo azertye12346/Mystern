@@ -1285,6 +1285,7 @@ function SolarisLib:New(Config)
 				if preset then
                     Bind:Set(preset)
                 end
+                
                 SolarisLib.Flags[flag] = Bind
                 return Bind
             end    
