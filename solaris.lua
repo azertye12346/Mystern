@@ -1216,7 +1216,7 @@ function SolarisLib:New(Config)
                 end)
                 return Textbox
             end    
-            function ItemHold:Bind(text,preset,holdmode,flag,callback)
+            function ItemHold:Bind(text,preset,holdmode,flag,callback,changedcallback)
                 local Bind, BindFrame = {Value, Binding = false, Holding = false}, game:GetObjects("rbxassetid://7126874744")[1]
                 BindFrame.Parent = Section
                 BindFrame.Title.Text = text
@@ -1246,6 +1246,7 @@ function SolarisLib:New(Config)
                         pcall(function()
                             if not CheckKey(BlacklistedKeys, Input.KeyCode) then
                                 Key = Input.KeyCode
+                                changedcallback(Key)
                             end
                         end)
                         pcall(function()
@@ -1285,7 +1286,7 @@ function SolarisLib:New(Config)
 				if preset then
                     Bind:Set(preset)
                 end
-                
+
                 SolarisLib.Flags[flag] = Bind
                 return Bind
             end    
